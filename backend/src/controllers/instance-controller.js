@@ -1,6 +1,5 @@
-const { PrismaClient } = require("@prisma/client");
 const botManager = require("../bot-manager");
-const prisma = new PrismaClient();
+const prisma = require("../db");
 
 exports.createInstance = async (req, res) => {
     const { name, adminNumber, botNumber, pairingType = "QR" } = req.body;

@@ -1,3 +1,8 @@
+if (process.env.VERCEL === '1') {
+    console.log("IRIS ENGINE: Persistent Bot ignored on Vercel deployment.");
+    process.exit(0);
+}
+
 const Baileys = require("@whiskeysockets/baileys");
 const {
     useMultiFileAuthState,

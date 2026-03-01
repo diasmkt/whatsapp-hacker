@@ -13,7 +13,7 @@ const licenseController = require("./controllers/license-controller");
 dotenv.config();
 
 const app = express();
-const prisma = new PrismaClient();
+const prisma = require("./db");
 const PORT = process.env.PORT || 3001;
 
 // MIDDLEWARES

@@ -1,30 +1,39 @@
-const { DisconnectReason } = require("@whiskeysockets/baileys");
 const fs = require("fs");
 const path = require("path");
 const { EventEmitter } = require("events");
-const { PrismaClient } = require("@prisma/client");
+const prisma = require("./db");
 
-// CARREGAMENTO DO RUNTIME LEGACY (MÉTODO START_INSTANCE)
-const { startInstance } = require("./bot-manager-v10");
+// CARREGAMENTO LAZY: O runtime Baileys só será carregado se não estivermos na Vercel
+let startInstance = null;
 
 /**
- * PRODUCTION BOT MANAGER - ARCHITECTURE V10 (LEGACY INTEGRATION)
- * Gerencia o ciclo de vida de múltiplas instâncias usando a lógica original do index.js.
+ * PRODUCTION BOT MANAGER - ARCHITECTURE V11 (SERVERLESS COMPATIBLE)
+ * Gerencia o ciclo de vida de múltiplas instâncias com separação total da camada persistente.
  */
 class BotManager extends EventEmitter {
     constructor() {
         super();
         this.activeNodes = new Map(); // instanceId -> { sock, status }
         this.bootLocks = new Set();
-        this.prisma = new PrismaClient();
-        this.instancesRootDir = path.resolve(__dirname, "..", "instances");
+        this.prisma = prisma;
+        this.isServerless = process.env.VERCEL === '1' || process.env.NODE_ENV === 'production';
 
-        if (!fs.existsSync(this.instancesRootDir)) {
+        // Em Vercel, o diretório de instâncias é apenas o /tmp
+        this.instancesRootDir = this.isServerless
+            ? path.join("/tmp", "instances")
+            : path.resolve(__dirname, "..", "instances");
+
+        if (!this.isServerless && !fs.existsSync(this.instancesRootDir)) {
             fs.mkdirSync(this.instancesRootDir, { recursive: true });
         }
     }
 
     async init() {
+        if (this.isServerless) {
+            console.log("[MANAGER] [Vercel] Skipping auto-restore (Serverless Mode).");
+            return;
+        }
+
         console.log("\n[SYSTEM] [BOOT] Restaurando instâncias configuradas...");
         const instances = await this.prisma.instance.findMany({
             where: { status: "active" },
@@ -42,8 +51,18 @@ class BotManager extends EventEmitter {
     }
 
     async startBot(instanceId) {
-        if (this.bootLocks.has(instanceId)) return;
+        if (this.isServerless) {
+            console.log(`[MANAGER] [${instanceId}] [Vercel] Sinalizando início para VPS externo.`);
+            // Em Vercel, apenas marcamos no banco que o bot DEVE ser iniciado.
+            // O processo persistente no VPS ou Local irá ler este status e iniciar.
+            await this.prisma.instance.update({
+                where: { id: instanceId },
+                data: { connection: "INITIALIZING", status: "active" }
+            }).catch(() => { });
+            return;
+        }
 
+        if (this.bootLocks.has(instanceId)) return;
         const existingNode = this.activeNodes.get(instanceId);
         if (existingNode && existingNode.status === 'CONNECTED') return;
 
@@ -56,6 +75,12 @@ class BotManager extends EventEmitter {
 
             if (!instance) throw new Error("Instância inexistente.");
 
+            // Lazy Load do motor Baileys
+            if (!startInstance) {
+                const legacy = require("./bot-manager-v10");
+                startInstance = legacy.startInstance;
+            }
+
             // Configuração para o Runtime V10
             const config = {
                 uuid: instanceId,
@@ -63,15 +88,15 @@ class BotManager extends EventEmitter {
                 adminNumber: instance.adminNumber,
                 botNumber: instance.botNumber,
                 usePairingCode: instance.pairingType === "CODE",
-                prefix: "." // Ou extrair do config do banco
+                prefix: "."
             };
 
-            console.log(`[MANAGER] [${instanceId}] Disparando Runtime V10...`);
+            console.log(`[MANAGER] [${instanceId}] Disparando Runtime V10 (Persistente)...`);
             const sock = await startInstance(config);
 
             this.activeNodes.set(instanceId, { sock, status: 'CONNECTED' });
 
-            // Repasse de eventos para o frontend (via SocketServer) e sincronização DB
+            // Eventos persistentes
             sock.ev.on("connection.update", async (update) => {
                 const { connection, qr, pairingCode } = update;
 
@@ -86,7 +111,6 @@ class BotManager extends EventEmitter {
                 }
 
                 if (connection === "open") {
-                    console.log(`[MANAGER] [${instanceId}] INSTÂNCIA CONECTADA NO WHATSAPP`);
                     this.emit("status", { instanceId, status: "CONNECTED" });
                     await this.prisma.instance.update({
                         where: { id: instanceId },
@@ -95,7 +119,6 @@ class BotManager extends EventEmitter {
                 }
 
                 if (connection === "close") {
-                    console.log(`[MANAGER] [${instanceId}] INSTÂNCIA DESCONECTADA`);
                     this.activeNodes.delete(instanceId);
                     this.emit("status", { instanceId, status: "DISCONNECTED" });
                     await this.prisma.instance.update({

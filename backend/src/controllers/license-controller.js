@@ -1,6 +1,5 @@
-const { PrismaClient } = require("@prisma/client");
 const crypto = require("crypto");
-const prisma = new PrismaClient();
+const prisma = require("../db");
 
 exports.getLicenses = async (req, res) => {
     try {

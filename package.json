@@ -16,7 +16,6 @@
   "keywords": [],
   "author": "IRIS",
   "license": "ISC",
-  "type": "commonjs",
   "dependencies": {
     "@hapi/boom": "^10.0.1",
     "@prisma/client": "^6.4.0",

@@ -1,0 +1,29 @@
+[SERVER] Multi-Tenant IRIS API running on port 3001
+
+[SYSTEM] [BOOT] Restaurando instâncias configuradas...
+[SERVER] Active instances restored.
+[REQ] GET /instances
+[REQ] GET /instances
+[REQ] GET /instances
+[REQ] GET /instances
+[REQ] GET /instances
+[REQ] GET /instances
+[REQ] GET /instances
+[REQ] GET /instances
+[REQ] GET /instances
+[REQ] GET /instances
+[REQ] GET /instances
+[REQ] GET /instances
+[REQ] GET /instances
+[REQ] GET /instances
+[REQ] GET /instances
+[REQ] GET /instances
+[REQ] GET /instances
+[REQ] GET /instances
+[REQ] GET /instances
+[REQ] GET /instances
+[REQ] GET /instances
+[REQ] GET /instances
+[REQ] GET /instances
+[REQ] GET /instances
+[REQ] GET /instances

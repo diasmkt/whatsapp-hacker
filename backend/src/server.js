@@ -109,7 +109,7 @@ app.post("/admin/rotate-root-cipher", authenticate, isAdmin, async (req, res) =>
 
 // --- INIT ---
 // VERCEL COMPATIBILITY: Do NOT run app.listen or bot restoration in serverless environments.
-if (process.env.VERCEL !== '1' && process.env.NODE_ENV !== 'production') {
+if (process.env.VERCEL !== '1') {
     app.listen(PORT, async () => {
         console.log(`[SERVER] Multi-Tenant IRIS API running on port ${PORT}`);
         try {

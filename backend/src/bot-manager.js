@@ -16,7 +16,7 @@ class BotManager extends EventEmitter {
         this.activeNodes = new Map(); // instanceId -> { sock, status }
         this.bootLocks = new Set();
         this.prisma = prisma;
-        this.isServerless = process.env.VERCEL === '1' || process.env.NODE_ENV === 'production';
+        this.isServerless = process.env.VERCEL === '1';
 
         // Em Vercel, o diretório de instâncias é apenas o /tmp
         this.instancesRootDir = this.isServerless

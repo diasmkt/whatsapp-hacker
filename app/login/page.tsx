@@ -63,7 +63,7 @@ export default function LoginPage() {
                     <div className="p-3 bg-gradient-to-tr from-cyan-500 to-purple-600 rounded-2xl mb-4 shadow-lg shadow-cyan-500/20">
                         <Sparkles className="w-8 h-8 text-white" />
                     </div>
-                    <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400 font-black tracking-tight">IRIS SaaS</h1>
+                    <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400 font-black tracking-tight">IRIS Bot</h1>
                     <p className="text-slate-400 mt-2">Faça login para gerenciar sua automação</p>
                 </div>
 

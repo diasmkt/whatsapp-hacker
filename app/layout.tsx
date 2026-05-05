@@ -5,7 +5,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "IRIS SaaS - WhatsApp Engine",
+  title: "IRIS Bot - WhatsApp Engine",
   description: "Next-generation WhatsApp automation for modern teams",
 };
 

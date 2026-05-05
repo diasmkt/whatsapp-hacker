@@ -1,0 +1,323 @@
+
+> wwp-bot-unified@1.0.0 dev
+> concurrently "WATCHPACK_POLLING=true next dev" "node backend/src/server.js"
+
+[1] [SERVER] Multi-Tenant IRIS API running on port 3001
+[1] 
+[1] [SYSTEM] [BOOT] Restaurando instâncias configuradas...
+[1] [DATABASE] Prisma successfully connected to the database.
+[1] [SERVER] Active instances restored.
+[0]  ⚠ Port 3000 is in use, trying 3001 instead.
+[0]  ⚠ Port 3001 is in use, trying 3002 instead.
+[0]  ⚠ Port 3002 is in use, trying 3003 instead.
+[0]  ⚠ Port 3003 is in use, trying 3004 instead.
+[0]  ⚠ Port 3004 is in use, trying 3005 instead.
+[0]    ▲ Next.js 15.1.6
+[0]    - Local:        http://localhost:3005
+[0]    - Network:      http://192.168.0.62:3005
+[0]    - Environments: .env.local, .env
+[0] 
+[0]  ✓ Starting...
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[0]  ✓ Ready in 2.1s
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /favicon.ico
+[1] [REQ] GET /instances
+[1] [REQ] GET /favicon.ico
+[1] [REQ] GET /favicon.ico
+[1] [REQ] GET /instances/b07ae9c2-a599-43af-8d6b-87789ef93751/status
+[1] [REQ] GET /favicon.ico
+[1] [REQ] GET /favicon.ico
+[1] [REQ] GET /favicon.ico
+[1] [REQ] GET /favicon.ico
+[1] [REQ] GET /favicon.ico
+[1] [REQ] GET /favicon.ico
+[1] [REQ] GET /favicon.ico
+[1] prisma:error Error in PostgreSQL connection: Error { kind: Io, cause: Some(Os { code: 110, kind: TimedOut, message: "Connection timed out" }) }
+[1] prisma:error Error in PostgreSQL connection: Error { kind: Io, cause: Some(Os { code: 110, kind: TimedOut, message: "Connection timed out" }) }
+[0] [Error: ENOENT: no such file or directory, scandir '/home/blackjarvisbot/Documentos/WWP BOT/app'] {
+[0]   errno: -2,
+[0]   code: 'ENOENT',
+[0]   syscall: 'scandir',
+[0]   path: '/home/blackjarvisbot/Documentos/WWP BOT/app'
+[0] }
+[0]  ⨯ unhandledRejection: [Error: ENOENT: no such file or directory, scandir '/home/blackjarvisbot/Documentos/WWP BOT/app'] {
+[0]   errno: -2,
+[0]   code: 'ENOENT',
+[0]   syscall: 'scandir',
+[0]   path: '/home/blackjarvisbot/Documentos/WWP BOT/app'
+[0] }
+[0]  ⨯ unhandledRejection:  [Error: ENOENT: no such file or directory, scandir '/home/blackjarvisbot/Documentos/WWP BOT/app'] {
+[0]   errno: -2,
+[0]   code: 'ENOENT',
+[0]   syscall: 'scandir',
+[0]   path: '/home/blackjarvisbot/Documentos/WWP BOT/app'
+[0] }
+[0] WATCHPACK_POLLING=true next dev exited with code SIGHUP
+[1] node backend/src/server.js exited with code SIGHUP

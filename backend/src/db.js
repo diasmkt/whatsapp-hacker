@@ -1,15 +1,21 @@
 const { PrismaClient } = require("@prisma/client");
 
-let prisma;
+const globalForPrisma = globalThis;
 
-if (process.env.NODE_ENV === "production") {
-    prisma = new PrismaClient();
-} else {
-    // In development, avoid creating multiple instances on hot reload
-    if (!global.prisma) {
-        global.prisma = new PrismaClient();
-    }
-    prisma = global.prisma;
+// Initialize Prisma Client with connection pooling considerations for serverless
+const prisma = globalForPrisma.prisma || new PrismaClient({
+    log: ['error', 'warn'],
+});
+
+if (process.env.NODE_ENV !== "production") {
+    globalForPrisma.prisma = prisma;
 }
+
+// Ensure the connection is established properly
+prisma.$connect()
+    .then(() => console.log("[DATABASE] Prisma successfully connected to the database."))
+    .catch((err) => {
+        console.error("[DATABASE_ERROR] Failed to establish Prisma connection:", err.message);
+    });
 
 module.exports = prisma;

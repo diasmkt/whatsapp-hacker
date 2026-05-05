@@ -43,7 +43,7 @@ export default function LandingPage() {
             animate={{ opacity: 1, y: 0 }}
             className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-white/5 border border-white/10 text-cyan-400 text-[10px] font-black tracking-[0.3em] uppercase mb-8"
           >
-            <Zap className="w-3 h-3" /> Já Disponível: IRIS SaaS Core
+            <Zap className="w-3 h-3" /> Já Disponível: IRIS Core Bot
           </motion.div>
 
           <motion.h1
@@ -72,7 +72,7 @@ export default function LandingPage() {
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <Link href="/login" className="w-full sm:w-auto px-10 py-5 bg-cyan-600 hover:bg-cyan-500 text-white rounded-2xl font-black text-sm uppercase tracking-widest transition-all shadow-xl shadow-cyan-900/30 flex items-center justify-center gap-3 active:scale-95 group">
-              Começar Teste Grátis <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              Começar com Iris <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>
         </div>
@@ -84,7 +84,7 @@ export default function LandingPage() {
           {[
             { icon: Shield, title: "Iris Guardian", desc: "Isolamento multi-tenant e políticas RLS para manter seus dados seguros." },
             { icon: MessageSquare, title: "Hub Multi-Sessão", desc: "Execute centenas de sessões independentes de WhatsApp simultaneamente." },
-            { icon: Layout, title: "Dashboard Next-Gen", desc: "Interface ultra-moderna inspirada em plataformas SaaS de alto nível." }
+            { icon: Layout, title: "Dashboard Next-Gen", desc: "Interface ultra-moderna inspirada em plataformas de alto nível." }
           ].map((feature, i) => (
             <motion.div
               key={i}
@@ -126,7 +126,7 @@ export default function LandingPage() {
             <Link href="/login" className="hover:text-white transition-colors">Contato</Link>
           </div>
           <div className="text-slate-500 text-sm">
-            © 2026 Limax SaaS. Todos os direitos reservados.
+            © 2026 Iris Bot. Todos os direitos reservados.
           </div>
         </div>
       </footer>

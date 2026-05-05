@@ -1,93 +1,82 @@
-# 🚀 IRIS SaaS - Plataforma de Automação de WhatsApp
+# IRIS Bot - WhatsApp Automation Engine
 
-Um SaaS completo e premium para gerenciar múltiplos bots de automação de WhatsApp. Construído com **Node.js**, **Next.js**, **Prisma** e **Baileys**.
+## 📋 Pré-requisitos
 
-## 🏗️ Arquitetura
-- **Backend**: API Express.js com autenticação JWT IRIS Guard e Gerenciador de Multi-Sessões.
-- **Frontend**: Dashboard Next.js 14 com uma interface premium em modo escuro.
-- **Bot Core**: Lógica de conexão IRIS Sync usando `@whiskeysockets/baileys`.
-- **Banco de Dados**: Supabase / PostgreSQL (Prisma ORM) com RLS para segurança.
-- **Implantação**: Docker Compose ou PM2 + Nginx no Ubuntu VPS.
+- Node.js 18+ instalado
+- NPM ou Yarn
 
-## 📁 Estrutura do Projeto
+## 🚀 Instalação Rápida
+
 ```bash
-.
-├── backend/            # API Express.js
-│   ├── prisma/         # Esquema do Banco de Dados
-│   ├── src/            # Lógica de Negócio
-│   └── auth_sessions/  # (Local) Armazenamento de Sessões do WhatsApp
-├── frontend/           # Aplicação Next.js
-│   ├── app/            # App Router (Login, Dashboard)
-│   └── components/      # Componentes UI
-├── docker-compose.yml  # Orquestração de Containers
-├── nginx.conf          # Configuração de Proxy Reverso
-├── ecosystem.config.js # Configuração PM2
-├── .env.example        # Modelo de Variáveis de Ambiente
-└── README.md           # Este guia
-```
+# 1. Clone o repositório
+git clone <seu-repo>
+cd wwp-bot-unified
 
-## 🚀 Início Rápido (Desenvolvimento Local)
-
-### 1. Requisitos
-- Node.js 18+
-- PostgreSQL
-- Docker (opcional)
-
-### 2. Configuração
-```bash
-# Clone e entre no diretório
-git clone [repo-url]
-cd [repo-folder]
-
-# Configurar Backend
-cd backend
+# 2. Instale as dependências
 npm install
-cp .env.example .env
-npx prisma generate
+
+# 3. Configure o banco SQLite (já configurado por padrão)
+# O arquivo .env já está pronto para uso local
+
+# 4. Crie o banco de dados
 npx prisma db push
 
-# Configurar Frontend
-cd ../frontend
-npm install
-npm run dev
+# 5. Crie os usuários iniciais
+npm run seed
 ```
 
-### 3. Iniciar Gerenciador de Multi-Sessões
+## ▶️ Como Rodar
+
 ```bash
-cd backend
+# Iniciar tudo (Frontend + Backend)
 npm run dev
+
+# Ou iniciar separadamente:
+npm run server    # Backend na porta 3001
+npm run start     # Frontend na porta 3000
 ```
 
-## 🚢 Implantação em Produção (VPS / Ubuntu)
+## 🔑 Login Inicial
 
-### 1. Docker (Recomendado)
+| Tipo | Email | Senha |
+|------|-------|-------|
+| Admin | admin@irisbot.com | admin123 |
+| Cliente | cliente@teste.com | cliente123 |
+
+## 📱 Como Conectar WhatsApp
+
+### Método 1: QR Code
+1. Crie uma instância no dashboard
+2. Clique em "Iniciar"
+3. Escaneie o QR Code com o WhatsApp
+
+### Método 2: Código de Pareamento
+1. Crie uma instância selecionando "CODE"
+2. Insira o número do bot (com DDD, ex: 5511999999999)
+3. O código aparecerá na tela
+4. No WhatsApp: Aparelhos conectados → Conectar aparelho → Insira o código
+
+## 🔧 Comandos Úteis
+
 ```bash
-docker-compose up -d --build
+npm run seed         # Criar usuários iniciais
+npm run db:push      # Atualizar banco
+npm run db:studio    # Ver banco no navegador
 ```
-Isso iniciará:
-- PostgreSQL (Porta 5432)
-- Backend API (Porta 3001)
-- Frontend App (Porta 3000)
 
-### 2. Manual (PM2 + Nginx)
-1. Instale Nginx e PM2 no seu VPS.
-2. Compile o frontend: `cd frontend && npm run build`.
-3. Inicie o backend: `cd backend && pm2 start ecosystem.config.js`.
-4. Configure o Nginx usando o modelo `nginx.conf` fornecido.
-5. Use Certbot para SSL: `sudo certbot --nginx -d seu-dominio.com`.
+## 📁 Estrutura do Projeto
 
-## 🛡️ Recursos de Segurança
-- **JWT Auth**: Rotas seguras com tokens `Bearer`.
-- **Sistema de Cargos**: Cargos ADMIN e CLIENT para controle de infraestrutura.
-- **Isolamento de Tenants**: Cada cliente tem sua própria pasta e sessão.
-- **Lógica de Licença**: Bots só iniciam se o tenant tiver uma licença válida.
-
-## 🛠️ Comandos e Recursos
-- **Gerenciamento de QR**: Geração de QR em tempo real no dashboard.
-- **Anti-Delete**: Notificações enviadas ao admin quando alguém apaga uma mensagem.
-- **Revelação de View-Once**: Admin recebe cópias de mídias de visualização única.
-- **Chaves de Licença**: Admins podem gerar e estender chaves.
-
-## 🤝 Suporte
-Solução SaaS profissional construída para automação de WhatsApp em larga escala.
-Plataforma de Autoridade Limax 2026.
+```
+├── app/              # Frontend Next.js
+│   ├── login/       # Página de login
+│   └── dashboard/   # Painel principal
+├── backend/         # API Express
+│   └── src/
+│       ├── server.js
+│       ├── auth.js
+│       └── bot-manager.js
+├── prisma/
+│   ├── schema.prisma
+│   └── seed.js
+└── .env             # Configurações
+```

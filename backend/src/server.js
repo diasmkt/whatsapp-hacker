@@ -9,6 +9,7 @@ const botManager = require("./bot-manager");
 
 const instanceController = require("./controllers/instance-controller");
 const licenseController = require("./controllers/license-controller");
+const adminUsersController = require("./controllers/admin-users-controller");
 
 dotenv.config();
 
@@ -26,6 +27,13 @@ app.use(express.json());
 
 // Health check route
 app.get("/health", (req, res) => res.json({ status: "ok" }));
+
+// Root route
+app.get("/", (req, res) => res.json({
+    status: "online",
+    service: "IRIS Multi-Tenant Bot API",
+    version: "1.0.0"
+}));
 
 // Request logging for debugging
 app.use((req, res, next) => {
@@ -59,16 +67,30 @@ app.post("/register", async (req, res) => {
 });
 
 app.post("/login", async (req, res) => {
-    let { email, password } = req.body;
-    email = email?.toLowerCase();
+    try {
+        let { email, password } = req.body;
+        console.log(`[LOGIN_ATTEMPT] Target: ${email}`);
 
-    const user = await prisma.user.findUnique({ where: { email } });
-    if (!user || !(await comparePassword(password, user.password))) {
-        return res.status(401).json({ error: "Invalid credentials." });
+        email = email?.toLowerCase();
+        if (!email || !password) return res.status(400).json({ error: "Missing email or password." });
+
+        const user = await prisma.user.findUnique({ where: { email } });
+        if (!user || !(await comparePassword(password, user.password))) {
+            console.log(`[LOGIN_FAILED] Invalid credentials for: ${email}`);
+            return res.status(401).json({ error: "Invalid credentials." });
+        }
+
+        const token = generateToken({ id: user.id, email: user.email, role: user.role });
+        console.log(`[LOGIN_SUCCESS] User: ${email}, ID: ${user.id}`);
+        res.json({ token, user: { id: user.id, email: user.email, role: user.role, name: user.name } });
+    } catch (err) {
+        console.error(`[DATABASE_ERROR_LOG] Full error on login for ${req.body.email}: `, err.message || err);
+        console.error(`[DATABASE_ERROR_STACK] `, err.stack);
+        res.status(500).json({
+            error: "Internal server error during login. Check database connection.",
+            details: process.env.NODE_ENV === "development" ? err.message : undefined
+        });
     }
-
-    const token = generateToken({ id: user.id, email: user.email, role: user.role });
-    res.json({ token, user: { id: user.id, email: user.email, role: user.role, name: user.name } });
 });
 
 app.get("/me", authenticate, async (req, res) => {
@@ -82,9 +104,10 @@ app.get("/me", authenticate, async (req, res) => {
 // --- INSTANCE ROUTES ---
 app.post("/instances", authenticate, instanceController.createInstance);
 app.get("/instances", authenticate, instanceController.getInstances);
-app.get("/instances/:id", authenticate, instanceController.getInstanceStatus);
+app.get("/instances/:id/status", authenticate, instanceController.getInstanceStatus);
 app.put("/instances/:id", authenticate, instanceController.updateInstance);
 app.post("/instances/:id/start", authenticate, instanceController.startInstance);
+app.post("/instances/:id/pairing-code", authenticate, instanceController.requestPairingCode);
 app.post("/instances/:id/stop", authenticate, instanceController.stopInstance);
 app.delete("/instances/:id", authenticate, instanceController.deleteInstance);
 
@@ -106,6 +129,12 @@ app.post("/admin/rotate-root-cipher", authenticate, isAdmin, async (req, res) =>
         res.status(500).json({ error: e.message });
     }
 });
+
+// Admin User Management
+app.get("/admin/users", authenticate, isAdmin, adminUsersController.getUsers);
+app.post("/admin/users", authenticate, isAdmin, adminUsersController.createUser);
+app.put("/admin/users/:id", authenticate, isAdmin, adminUsersController.updateUser);
+app.delete("/admin/users/:id", authenticate, isAdmin, adminUsersController.deleteUser);
 
 // --- INIT ---
 // VERCEL COMPATIBILITY: Do NOT run app.listen or bot restoration in serverless environments.

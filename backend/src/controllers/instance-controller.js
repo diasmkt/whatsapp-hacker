@@ -60,7 +60,22 @@ exports.getInstanceStatus = async (req, res) => {
     const { id } = req.params;
     try {
         const instance = await prisma.instance.findUnique({ where: { id } });
-        res.json(instance);
+        if (!instance) return res.status(404).json({ error: "Instance not found" });
+
+        // Enhance with in-memory status if available
+        const memoryNode = botManager.activeNodes.get(id);
+        const inMemoryStatus = memoryNode ? memoryNode.status : "DISCONNECTED";
+        const isActuallyConnected = inMemoryStatus === "CONNECTED";
+
+        res.json({
+            id: instance.id,
+            status: isActuallyConnected ? "connected" : inMemoryStatus.toLowerCase(),
+            phone: isActuallyConnected ? instance.botNumber : null,
+            connectedAt: isActuallyConnected ? instance.connectedAt : null,
+            dbStatus: instance.connection,
+            pairingCode: (inMemoryStatus === "AWAITING_PAIRING" || instance.connection === "AWAITING_PAIRING") ? instance.pairingCode : null,
+            lastQR: (inMemoryStatus === "AWAITING_QR" || instance.connection === "AWAITING_QR") ? instance.lastQR : null
+        });
     } catch (e) {
         res.status(500).json({ error: e.message });
     }
@@ -69,9 +84,27 @@ exports.getInstanceStatus = async (req, res) => {
 exports.startInstance = async (req, res) => {
     const { id } = req.params;
     try {
-        await botManager.startBot(id);
-        res.json({ message: "Instance initialization started." });
+        const result = await botManager.startBot(id);
+        res.json({ message: "Instance initialization processing.", result });
     } catch (e) {
+        res.status(500).json({ error: e.message });
+    }
+};
+
+exports.requestPairingCode = async (req, res) => {
+    const { id } = req.params;
+    const { phoneNumber } = req.body;
+    try {
+        console.log('[PAIRING] Iniciando geração de código...');
+        console.log('[PAIRING] ID da instância:', id);
+        console.log('[PAIRING] Phone recebido:', phoneNumber);
+
+        const code = await botManager.requestPairingCode(id, phoneNumber);
+
+        console.log('[PAIRING] Código gerado com sucesso:', code);
+        res.json({ pairingCode: code });
+    } catch (e) {
+        console.error('[PAIRING] ERRO COMPLETO:', e);
         res.status(500).json({ error: e.message });
     }
 };

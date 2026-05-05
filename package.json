@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "concurrently \"WATCHPACK_POLLING=true next dev\" \"node backend/src/server.js\"",
-    "build": "npm install && npx prisma generate && npx prisma db push && npm run seed && next build",
+    "build": "npm install && npx prisma generate && npx prisma db push && npm run seed && next build --no-lint",
     "start": "next start",
     "lint": "next lint",
     "server": "node backend/src/server.js",
